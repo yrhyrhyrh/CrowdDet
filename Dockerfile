@@ -8,6 +8,11 @@ ENV TORCH_CUDA_ARCH_LIST="6.0 6.1 7.0+PTX"
 ENV TORCH_NVCC_FLAGS="-Xfatbin -compress-all"
 ENV CMAKE_PREFIX_PATH="$(dirname $(which conda))/../"
 
+COPY ./cuda-keyring_1.0-1_all.deb cuda-keyring_1.0-1_all.deb
+RUN rm /etc/apt/sources.list.d/cuda.list \
+    && rm /etc/apt/sources.list.d/nvidia-ml.list \
+    && dpkg -i cuda-keyring_1.0-1_all.deb
+    
 RUN apt-get update && apt-get install -y vim git ninja-build libglib2.0-0 libsm6 libgl1-mesa-dev libxrender-dev libxext6 \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
