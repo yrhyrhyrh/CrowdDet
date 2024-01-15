@@ -6,7 +6,7 @@ import argparse
 sys.path.insert(0, '../lib')
 from utils import misc_utils, visual_utils
 
-img_root = '/data/CrowdHuman/images/'
+img_root = '/crowddet/data/CrowdHuman/images/'
 def eval_all(args):
     # json file
     assert os.path.exists(args.json_file), "Wrong json path!"
@@ -24,11 +24,11 @@ def eval_all(args):
         len_gt = len(gtboxes)
         line = "{}: dt:{}, gt:{}.".format(record['ID'], len_dt, len_gt)
         print(line)
-        img_path = img_root + record['ID'] + '.png'
+        img_path = img_root + record['ID'] + '.jpg'
         img = misc_utils.load_img(img_path)
         visual_utils.draw_boxes(img, dtboxes, line_thick=1, line_color='blue')
         visual_utils.draw_boxes(img, gtboxes, line_thick=1, line_color='white')
-        fpath = 'outputs/{}.png'.format(record['ID'])
+        fpath = 'outputs/{}.jpg'.format(record['ID'])
         cv2.imwrite(fpath, img)
 
 

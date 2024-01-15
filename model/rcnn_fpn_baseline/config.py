@@ -15,9 +15,9 @@ class Crowd_human:
     class_names = ['background', 'person']
     num_classes = len(class_names)
     root_folder = '/data/CrowdHuman'
-    image_folder = '/data/CrowdHuman/images'
-    train_source = os.path.join('/data/CrowdHuman/annotation_train.odgt')
-    eval_source = os.path.join('/data/CrowdHuman/annotation_val.odgt')
+    image_folder = '/crowddet/data/CrowdHuman/images'
+    train_source = os.path.join('/crowddet/data/CrowdHuman/annotation_train.odgt')
+    eval_source = os.path.join('/crowddet/data/CrowdHuman/annotation_val.odgt')
 
 class Config:
     output_dir = 'outputs'

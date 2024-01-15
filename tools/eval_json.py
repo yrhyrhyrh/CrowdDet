@@ -8,7 +8,7 @@ from evaluate import compute_JI, compute_APMR
 
 def eval_all(args):
     # ground truth file
-    gt_path = '/data/CrowdHuman/annotation_val.odgt'
+    gt_path = '/crowddet/data/CrowdHuman/annotation_val.odgt'
     assert os.path.exists(gt_path), "Wrong ground truth path!"
     misc_utils.ensure_dir('outputs')
     # output file

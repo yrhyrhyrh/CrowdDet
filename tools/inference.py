@@ -36,7 +36,7 @@ def inference(args, config, network):
             tags=pred_tags_name,
             line_thick=1, line_color='white')
     name = args.img_path.split('/')[-1].split('.')[-2]
-    fpath = 'outputs/{}.png'.format(name)
+    fpath = 'outputs/{}.jpg'.format(name)
     cv2.imwrite(fpath, image)
 
 def post_process(pred_boxes, config, scale):
