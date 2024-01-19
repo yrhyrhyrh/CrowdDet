@@ -6,7 +6,7 @@ import argparse
 sys.path.insert(0, '../lib')
 from utils import misc_utils, visual_utils
 
-img_root = '/crowddet/data/CrowdHuman/images/'
+img_root = '/home/FYP/ryu007/CrowdDet/data/CrowdHuman/images/'
 def eval_all(args):
     # json file
     assert os.path.exists(args.json_file), "Wrong json path!"

@@ -1,0 +1,79 @@
+/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/__init__.py:614: UserWarning: torch.set_default_tensor_type() is deprecated as of PyTorch 2.1, please use torch.set_default_dtype() and torch.set_default_device() as alternatives. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400430266/work/torch/csrc/tensor/python_tensor.cpp:451.)
+  _C._set_default_tensor_type(t)
+/home/FYP/ryu007/CrowdDet/lib/data/CrowdHuman.py:93: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400430266/work/torch/csrc/utils/tensor_new.cpp:261.)
+  ground_truth = torch.tensor(ground_truth).float()
+/home/FYP/ryu007/CrowdDet/lib/data/CrowdHuman.py:93: UserWarning: Creating a tensor from a list of numpy.ndarrays is extremely slow. Please consider converting the list to a single numpy.ndarray with numpy.array() before converting to a tensor. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400430266/work/torch/csrc/utils/tensor_new.cpp:261.)
+  ground_truth = torch.tensor(ground_truth).float()
+Traceback (most recent call last):
+  File "/home/FYP/ryu007/CrowdDet/./tools/train.py", line 174, in <module>
+    run_train()
+  File "/home/FYP/ryu007/CrowdDet/./tools/train.py", line 171, in run_train
+    multi_train(args, config, Network)
+  File "/home/FYP/ryu007/CrowdDet/./tools/train.py", line 155, in multi_train
+    torch.multiprocessing.spawn(train_worker, nprocs=num_gpus, args=(train_config, network, config))
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 246, in spawn
+    return start_processes(fn, args, nprocs, join, daemon, start_method="spawn")
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 202, in start_processes
+    while not context.join():
+              ^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 163, in join
+    raise ProcessRaisedException(msg, error_index, failed_process.pid)
+torch.multiprocessing.spawn.ProcessRaisedException: 
+
+-- Process 0 terminated with the following error:
+Traceback (most recent call last):
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/multiprocessing/spawn.py", line 74, in _wrap
+    fn(i, *args)
+  File "/home/FYP/ryu007/CrowdDet/tools/train.py", line 109, in train_worker
+    do_train_epoch(net, data_iter, optimizer, rank, epoch_id, train_config)
+  File "/home/FYP/ryu007/CrowdDet/tools/train.py", line 55, in do_train_epoch
+    outputs = net(images.cuda(rank), im_info.cuda(rank), gt_boxes.cuda(rank))
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1519, in forward
+    else self._run_ddp_forward(*inputs, **kwargs)
+         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/parallel/distributed.py", line 1355, in _run_ddp_forward
+    return self.module(*inputs, **kwargs)  # type: ignore[index]
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/CrowdDet/model/rcnn_fpn_baseline/network.py", line 29, in forward
+    return self._forward_train(image, im_info, gt_boxes)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/CrowdDet/model/rcnn_fpn_baseline/network.py", line 35, in _forward_train
+    fpn_fms = self.FPN(image)
+              ^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/CrowdDet/lib/backbone/fpn.py", line 56, in forward
+    results.append(output_conv(prev_features))
+                   ^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1518, in _wrapped_call_impl
+    return self._call_impl(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/module.py", line 1527, in _call_impl
+    return forward_call(*args, **kwargs)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/conv.py", line 460, in forward
+    return self._conv_forward(input, self.weight, self.bias)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/nn/modules/conv.py", line 456, in _conv_forward
+    return F.conv2d(input, weight, bias, self.stride,
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+torch.cuda.OutOfMemoryError: CUDA out of memory. Tried to allocate 884.00 MiB. GPU 0 has a total capacty of 31.74 GiB of which 503.12 MiB is free. Including non-PyTorch memory, this process has 31.24 GiB memory in use. Of the allocated memory 30.50 GiB is allocated by PyTorch, and 227.34 MiB is reserved by PyTorch but unallocated. If reserved but unallocated memory is large try setting max_split_size_mb to avoid fragmentation.  See documentation for Memory Management and PYTORCH_CUDA_ALLOC_CONF
+

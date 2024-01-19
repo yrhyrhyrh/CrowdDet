@@ -1,0 +1,6 @@
+Traceback (most recent call last):
+  File "./tools/train.py", line 8, in <module>
+    from data.CrowdHuman import CrowdHuman
+  File "/home/FYP/ryu007/CrowdDet/lib/data/CrowdHuman.py", line 2, in <module>
+    import cv2
+ModuleNotFoundError: No module named 'cv2'

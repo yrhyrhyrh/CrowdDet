@@ -2,9 +2,10 @@ import os
 import sys
 import argparse
 import torch
+import gc
 
-sys.path.insert(0, '../lib')
-sys.path.insert(0, '../model')
+sys.path.insert(0, '/home/FYP/ryu007/CrowdDet/lib')
+sys.path.insert(0, '/home/FYP/ryu007/CrowdDet/model')
 from data.CrowdHuman import CrowdHuman
 from utils import misc_utils, SGD_bias
 
@@ -155,6 +156,8 @@ def multi_train(params, config, network):
     torch.multiprocessing.spawn(train_worker, nprocs=num_gpus, args=(train_config, network, config))
 
 def run_train():
+    torch.cuda.empty_cache()
+    gc.collect()
     parser = argparse.ArgumentParser()
     parser.add_argument('--model_dir', '-md', default=None,required=True,type=str)
     parser.add_argument('--resume_weights', '-r', default=None,type=int)
@@ -164,7 +167,7 @@ def run_train():
     #os.environ['NCCL_DEBUG'] = 'INFO'
     args = parser.parse_args()
     # import libs
-    model_root_dir = os.path.join('../model/', args.model_dir)
+    model_root_dir = os.path.join('/home/FYP/ryu007/CrowdDet/model', args.model_dir)
     sys.path.insert(0, model_root_dir)
     from config import config
     from network import Network

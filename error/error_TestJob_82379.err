@@ -1,0 +1,3 @@
+/home/FYP/ryu007/.conda/envs/torch/lib/python3.11/site-packages/torch/__init__.py:614: UserWarning: torch.set_default_tensor_type() is deprecated as of PyTorch 2.1, please use torch.set_default_dtype() and torch.set_default_device() as alternatives. (Triggered internally at /opt/conda/conda-bld/pytorch_1702400430266/work/torch/csrc/tensor/python_tensor.cpp:451.)
+  _C._set_default_tensor_type(t)
+slurmstepd: error: *** JOB 82379 ON SCSEGPU-TC1-07 CANCELLED AT 2024-01-18T19:31:24 ***

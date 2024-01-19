@@ -14,16 +14,16 @@ add_path(os.path.join(root_dir, 'lib'))
 class Crowd_human:
     class_names = ['background', 'person']
     num_classes = len(class_names)
-    root_folder = '/data/CrowdHuman'
-    image_folder = '/crowddet/data/CrowdHuman/images'
-    train_source = os.path.join('/crowddet/data/CrowdHuman/annotation_train.odgt')
-    eval_source = os.path.join('/crowddet/data/CrowdHuman/annotation_val.odgt')
+    root_folder = '/home/FYP/ryu007/CrowdDet/data/CrowdHuman'
+    image_folder = '/home/FYP/ryu007/CrowdDet/data/CrowdHuman/images'
+    train_source = os.path.join('/home/FYP/ryu007/CrowdDet/data/CrowdHuman/annotation_train.odgt')
+    eval_source = os.path.join('/home/FYP/ryu007/CrowdDet/data/CrowdHuman/annotation_val.odgt')
 
 class Config:
     output_dir = 'outputs'
     model_dir = os.path.join(output_dir, 'model_dump')
     eval_dir = os.path.join(output_dir, 'eval_dump')
-    init_weights = '/crowddet/data/model/resnet50_fbaug.pth'
+    init_weights = '/home/FYP/ryu007/CrowdDet/data/model/resnet50_fbaug.pth'
 
     # ----------data config---------- #
     image_mean = np.array([103.530, 116.280, 123.675])
